@@ -106,20 +106,13 @@ export default function Contact() {
       <Header />
 
       {/* Hero */}
-      <section className="relative py-24 mt-16" style={{ backgroundColor: "#002e5d" }}>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg, #f5c033 0, #f5c033 1px, transparent 0, transparent 50%)",
-            backgroundSize: "20px 20px",
-          }}
-        />
-        <div className="relative z-10 section-container">
+      <section className="relative py-24 mt-16 bg-white">
+        <div className="section-container">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-lime-400 font-semibold uppercase tracking-widest text-sm mb-4"
+            className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-4"
           >
             {t("reachOut")}
           </motion.p>
@@ -127,7 +120,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black text-white mb-8"
+            className="text-5xl md:text-7xl font-black text-navy-900 mb-8"
           >
             {t("contactTitle")}
           </motion.h1>
@@ -135,15 +128,15 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 text-white"
+            className="flex flex-col sm:flex-row gap-4 text-gray-600"
           >
-            <a href="mailto:info@ehl.co.za" className="flex items-center gap-3 hover:text-lime-400 transition-colors text-lg">
-              <Mail size={20} className="text-lime-400" />
+            <a href="mailto:info@ehl.co.za" className="flex items-center gap-3 hover:text-lime-500 transition-colors text-lg">
+              <Mail size={20} className="text-lime-500" />
               info@ehl.co.za
             </a>
-            <span className="hidden sm:block text-white/30">|</span>
-            <a href="tel:+27113707400" className="flex items-center gap-3 hover:text-lime-400 transition-colors text-lg">
-              <Phone size={20} className="text-lime-400" />
+            <span className="hidden sm:block text-gray-300">|</span>
+            <a href="tel:+27113707400" className="flex items-center gap-3 hover:text-lime-500 transition-colors text-lg">
+              <Phone size={20} className="text-lime-500" />
               +27 (0)11 370 7400
             </a>
           </motion.div>
