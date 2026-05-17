@@ -45,58 +45,6 @@ export default function ImageCarousel() {
       {/* Animated content */}
       <div className="relative z-10 h-full flex items-center">
         <div className="section-container w-full">
-          <motion.div
-            className="max-w-2xl"
-            variants={container}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* Tag line */}
-            <motion.p
-              variants={fadeIn}
-              className="text-lime-400 font-semibold uppercase tracking-widest text-sm mb-4"
-            >
-              ISO 9001:2025 · Level 1 BBBEE · 4 Decades of Excellence
-            </motion.p>
-
-            {/* Headline */}
-            <motion.h1
-              variants={fadeUp}
-              className="text-5xl md:text-7xl font-black text-white leading-tight mb-6"
-              style={{ letterSpacing: "-0.02em" }}
-            >
-              Engineering
-              <br />
-              <span style={{ color: "#f5c033" }}>the Future</span>
-              <br />
-              of Africa
-            </motion.h1>
-
-            {/* Sub-headline */}
-            <motion.p
-              variants={fadeUp}
-              className="text-lg md:text-xl text-white/80 leading-relaxed mb-10 max-w-lg"
-            >
-              {t("missionStatement").slice(0, 180)}…
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 font-bold rounded text-sm transition-all hover:opacity-90"
-                style={{ backgroundColor: "#f5c033", color: "#002e5d" }}
-              >
-                {t("getInTouch")} <ChevronRight size={18} />
-              </Link>
-              <a
-                href="/#services"
-                className="inline-flex items-center gap-2 px-8 py-4 font-bold rounded text-sm border-2 border-white/40 text-white hover:border-lime-400 hover:text-lime-400 transition-all"
-              >
-                {t("services")}
-              </a>
-            </motion.div>
-          </motion.div>
         </div>
       </div>
 

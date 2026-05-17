@@ -166,15 +166,12 @@ export default function Index() {
         <section id="services" className="py-24 bg-white">
           <div className="section-container">
             <Section>
-              <motion.p variants={fadeUp} className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-2">
+              <motion.p variants={fadeUp} className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-2 text-center mx-auto">
                 What We Do
               </motion.p>
-              <motion.h2 variants={fadeUp} className="text-4xl font-bold text-navy-900 mb-4">
+              <motion.h2 variants={fadeUp} className="text-4xl font-bold text-navy-900 mb-4 text-center mr-auto">
                 {t("servicesTitle")}
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-gray-600 mb-14 max-w-2xl leading-relaxed">
-                {t("servicesSubtitle")}
-              </motion.p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <motion.div variants={fadeUp}><ServiceCard icon={Briefcase} title={t("consulting")} backgroundColor="#002e5d" backContent={t("consultingDesc")} /></motion.div>
                 <motion.div variants={fadeUp}><ServiceCard icon={BarChart3} title={t("projectManagement")} backgroundColor="rgb(88,89,91)" backContent={t("projectManagementDesc")} /></motion.div>
@@ -201,36 +198,6 @@ export default function Index() {
           </div>
         </section>
 
-        {/* Our Results */}
-        <section
-          className="relative py-28 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1600&h=900&fit=crop')" }}
-        >
-          <div className="absolute inset-0 bg-black/70" />
-          <div className="relative z-10 section-container text-center">
-            <Section>
-              <motion.h2 variants={fadeUp} className="text-4xl font-bold text-white mb-16">
-                {t("ourResults")}
-              </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-3xl mx-auto">
-                {[
-                  { value: "3,679", label: t("projectsLabel") },
-                  { value: "150", label: t("happyClientsLabel") },
-                  { value: "3.5M", label: t("ltiManhoursLabel") },
-                ].map((stat) => (
-                  <motion.div key={stat.label} variants={fadeUp}>
-                    <AnimatedCounter
-                      value={stat.value}
-                      className="text-6xl md:text-7xl font-black block mb-3"
-                      style={{ color: "#f5c033" }}
-                    />
-                    <p className="text-white font-semibold text-lg">{stat.label}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </Section>
-          </div>
-        </section>
 
         {/* Designed Safe */}
         <section className="py-24 bg-white">
@@ -246,16 +213,6 @@ export default function Index() {
                 <motion.p variants={fadeUp} className="text-lg text-gray-700 mb-8 leading-relaxed">
                   {t("designedSafeDesc")}
                 </motion.p>
-                <motion.div
-                  variants={fadeUp}
-                  className="border-l-4 border-lime-400 pl-5 py-3 rounded-r-lg mb-8 bg-amber-50"
-                >
-                  <AnimatedCounter
-                    value="3.5M"
-                    className="text-3xl font-black text-navy-900 block"
-                  />
-                  <p className="text-gray-500 text-sm mt-1">{t("ltiManhoursLabel")} — Milestone 2025</p>
-                </motion.div>
                 <motion.div variants={fadeUp}>
                   <Link to="/contact" className="btn-primary inline-flex items-center gap-2">
                     {t("moreAboutUs")} <ChevronRight size={20} />
