@@ -22,7 +22,8 @@ const ScrollToTop = () => {
     if (!location.hash) {
       window.scrollTo(0, 0);
     } else {
-      const element = document.querySelector(location.hash);
+      const hash = location.hash.split("?")[0];
+      const element = document.querySelector(hash);
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth" });
