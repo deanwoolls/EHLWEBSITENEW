@@ -44,7 +44,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const to = "info@ehleng.com";
+    const to = "info@ehl.co.za";
     const subjectLabel = formData.subject
       ? `[EHL Enquiry] ${formData.subject.replace(/-/g, " ")} — ${formData.name}`
       : `[EHL Enquiry] ${formData.name}`;
@@ -360,8 +360,7 @@ export default function Contact() {
           backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F5fae7741e22a4763ad33a3fbbcf02ce4)",
         }}
       >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative section-container text-center">
+        <div className="section-container text-center">
           <h2 className="text-4xl font-bold text-white mb-6">{t("visitUs")}</h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">{t("visitUsDesc")}</p>
         </div>
