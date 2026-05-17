@@ -19,6 +19,12 @@
   to = "/.netlify/functions/api/:splat"
 
 [[redirects]]
+  from = "/*.pdf"
+  to = "/:splat.pdf"
+  status = 200
+  force = false
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
