@@ -22,15 +22,14 @@ export default function ImageCarousel() {
   const { t } = useLanguage();
 
   return (
-    <div className="relative w-full overflow-hidden md:h-svh md:min-h-[520px]">
-      {/* Background video — on mobile: full width, auto height; on desktop: covers viewport */}
+    <div className="relative w-full aspect-video overflow-hidden">
       <video
         src="https://cdn.builder.io/o/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F51d90f82b79148bc9c0e89353a35eb3e?alt=media&token=d1831b1c-eb5e-43ed-b1f1-c56829600487&apiKey=e5a5727af6f64ca390a031056c6f518e"
         autoPlay
         muted
         loop
         playsInline
-        className="w-full h-auto block md:absolute md:inset-0 md:h-full md:object-cover"
+        className="absolute inset-0 w-full h-full object-cover"
         aria-hidden="true"
       />
 
@@ -43,7 +42,7 @@ export default function ImageCarousel() {
       />
 
       {/* Animated content */}
-      <div className="relative z-10 md:h-full flex items-center">
+      <div className="relative z-10 h-full flex items-center">
         <div className="section-container w-full">
         </div>
       </div>
