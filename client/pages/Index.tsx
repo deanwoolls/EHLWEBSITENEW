@@ -174,7 +174,7 @@ export default function Index() {
               </motion.h2>
               <motion.div variants={fadeUp} className="flex justify-center mb-12">
                 <a
-                  href="/EHL-Value-Proposition.pdf"
+                  href="https://ehl.co.za/EHL-Value-Proposition.pdf"
                   download="EHL-Value-Proposition.pdf"
                   target="_blank"
                   rel="noopener noreferrer"

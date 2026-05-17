@@ -93,12 +93,11 @@ export default function Footer() {
             >
               <Linkedin size={20} />
             </a>
-            <a
-              href="/privacy-terms"
-              className="text-sm text-cream-300 hover:text-lime-400 transition-colors"
-            >
-              {t("privacyTerms")}
-            </a>
+            <a href="/privacy-terms#privacy" className="text-sm text-cream-300 hover:text-lime-400 transition-colors">Privacy Policy</a>
+            <span className="text-cream-300 text-sm">•</span>
+            <a href="/privacy-terms#terms" className="text-sm text-cream-300 hover:text-lime-400 transition-colors">Terms &amp; Conditions</a>
+            <span className="text-cream-300 text-sm">•</span>
+            <a href="/privacy-terms#disclaimer" className="text-sm text-cream-300 hover:text-lime-400 transition-colors">Disclaimer</a>
           </div>
         </div>
       </div>
