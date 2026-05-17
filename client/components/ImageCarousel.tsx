@@ -64,7 +64,7 @@ export default function ImageCarousel() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.6 }}
       >
-        <span className="text-white/50 text-xs uppercase tracking-widest">Scroll</span>
+        <span className="text-white/50 text-xs uppercase tracking-widest">{t("scroll")}</span>
         <motion.div
           className="w-0.5 h-8 bg-white/30 rounded"
           animate={{ scaleY: [1, 0.4, 1] }}

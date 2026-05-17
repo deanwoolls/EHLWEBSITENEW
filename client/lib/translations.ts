@@ -155,6 +155,19 @@ export const translations: Record<Language, Record<string, string>> = {
       "Our Centurion office supports project delivery and management across the Gauteng region with focused expertise in engineering solutions.",
     description_rb:
       "Our Rustenburg office specializes in mining and industrial projects, serving the resource sector across the North West region.",
+
+    // Misc UI
+    howWeWork: "How We Work",
+    whatWeDo: "What We Do",
+    tapToLearnMore: "Tap to learn more",
+    scroll: "Scroll",
+    reachOut: "Reach Out",
+    letsTalk: "Let's Talk",
+    sending: "Sending…",
+    notFoundTitle: "Page not found",
+    notFoundDesc: "Oops! The page you're looking for doesn't exist. Let's get you back on track.",
+    returnHome: "Return to Home",
+    toggleNav: "Toggle navigation",
   },
   zh: {
     // Navigation & Header
@@ -283,6 +296,18 @@ export const translations: Record<Language, Record<string, string>> = {
       "我们的世纪城办公室支持高陶地区的项目交付和管理，具有工程解决方案的专业知识。",
     description_rb:
       "我们的鲁斯坦堡办公室专门从事采矿和工业项目，为西北地区的资源部门提供服务。",
+
+    howWeWork: "我们如何工作",
+    whatWeDo: "我们的业务",
+    tapToLearnMore: "点击了解更多",
+    scroll: "滚动",
+    reachOut: "联系我们",
+    letsTalk: "开始交流",
+    sending: "发送中…",
+    notFoundTitle: "页面未找到",
+    notFoundDesc: "哎呀！您正在寻找的页面不存在。让我们帮您回到正轨。",
+    returnHome: "返回首页",
+    toggleNav: "切换导航",
   },
   fr: {
     // Navigation & Header
@@ -415,6 +440,18 @@ export const translations: Record<Language, Record<string, string>> = {
       "Notre bureau de Centurion soutient la livraison et la gestion des projets dans la région du Gauteng avec une expertise spécialisée dans les solutions d'ingénierie.",
     description_rb:
       "Notre bureau de Rustenburg se spécialise dans les projets d'exploitation minière et industriels, servant le secteur des ressources dans la région du Nord-Ouest.",
+
+    howWeWork: "Comment nous travaillons",
+    whatWeDo: "Ce que nous faisons",
+    tapToLearnMore: "Appuyez pour en savoir plus",
+    scroll: "Défiler",
+    reachOut: "Contactez-nous",
+    letsTalk: "Discutons",
+    sending: "Envoi en cours…",
+    notFoundTitle: "Page non trouvée",
+    notFoundDesc: "Oups ! La page que vous recherchez n'existe pas. Revenons à l'essentiel.",
+    returnHome: "Retour à l'accueil",
+    toggleNav: "Activer/désactiver la navigation",
   },
   de: {
     // Navigation & Header
@@ -546,6 +583,18 @@ export const translations: Record<Language, Record<string, string>> = {
       "Unser Büro in Centurion unterstützt die Projektabwicklung und Verwaltung in der Gauteng-Region mit spezialisierter Kompetenz in Ingenieurlösungen.",
     description_rb:
       "Unser Büro in Rustenburg spezialisiert sich auf Bergbau- und Industrieprojekte und betreut den Ressourcensektor in der Region Nordwesten.",
+
+    howWeWork: "Wie wir arbeiten",
+    whatWeDo: "Was wir tun",
+    tapToLearnMore: "Tippen Sie für mehr Infos",
+    scroll: "Scrollen",
+    reachOut: "Kontaktieren Sie uns",
+    letsTalk: "Reden wir",
+    sending: "Senden…",
+    notFoundTitle: "Seite nicht gefunden",
+    notFoundDesc: "Hoppla! Die gesuchte Seite existiert nicht. Kommen wir wieder auf Kurs.",
+    returnHome: "Zurück zur Startseite",
+    toggleNav: "Navigation umschalten",
   },
   es: {
     // Navigation & Header
@@ -677,6 +726,18 @@ export const translations: Record<Language, Record<string, string>> = {
       "Nuestra oficina en Centurion apoya la entrega y gestión de proyectos en la región de Gauteng con experiencia especializada en soluciones de ingeniería.",
     description_rb:
       "Nuestra oficina en Rustenburg se especializa en proyectos mineros e industriales, sirviendo al sector de recursos en la región del Noroeste.",
+
+    howWeWork: "Cómo trabajamos",
+    whatWeDo: "Lo que hacemos",
+    tapToLearnMore: "Toca para más información",
+    scroll: "Desplazar",
+    reachOut: "Contáctanos",
+    letsTalk: "Hablemos",
+    sending: "Enviando…",
+    notFoundTitle: "Página no encontrada",
+    notFoundDesc: "¡Vaya! La página que buscas no existe. Volvamos al camino correcto.",
+    returnHome: "Volver al inicio",
+    toggleNav: "Alternar navegación",
   },
   ar: {
     // Navigation & Header
@@ -806,6 +867,18 @@ export const translations: Record<Language, Record<string, string>> = {
       "تدعم مكتبنا في سنترويون تسليم وإدارة المشاريع عبر منطقة غوتنغ بخبرة متخصصة في حلول الهندسة.",
     description_rb:
       "يتخصص مكتبنا في روستنبرج في مشاريع التعدين والصناعة، وتخدم قطاع الموارد في منطقة الشمال الغربي.",
+
+    howWeWork: "كيف نعمل",
+    whatWeDo: "ما نقوم به",
+    tapToLearnMore: "انقر لمعرفة المزيد",
+    scroll: "تمرير",
+    reachOut: "تواصل معنا",
+    letsTalk: "لنتحدث",
+    sending: "جارٍ الإرسال…",
+    notFoundTitle: "الصفحة غير موجودة",
+    notFoundDesc: "عذراً! الصفحة التي تبحث عنها غير موجودة. دعنا نعيدك إلى المسار الصحيح.",
+    returnHome: "العودة إلى الرئيسية",
+    toggleNav: "تبديل التنقل",
   },
   pt: {
     // Navigation & Header
@@ -936,6 +1009,18 @@ export const translations: Record<Language, Record<string, string>> = {
       "Nosso escritório em Centurion apoia a entrega e gerenciamento de projetos na região de Gauteng com experiência especializada em soluções de engenharia.",
     description_rb:
       "Nosso escritório em Rustenburg se especializa em projetos de mineração e indústria, servindo o setor de recursos na região Noroeste.",
+
+    howWeWork: "Como Trabalhamos",
+    whatWeDo: "O que Fazemos",
+    tapToLearnMore: "Toque para saber mais",
+    scroll: "Rolar",
+    reachOut: "Entre em Contato",
+    letsTalk: "Vamos Conversar",
+    sending: "Enviando…",
+    notFoundTitle: "Página não encontrada",
+    notFoundDesc: "Oops! A página que você está procurando não existe. Vamos colocá-lo de volta nos trilhos.",
+    returnHome: "Voltar ao Início",
+    toggleNav: "Alternar navegação",
   },
   ru: {
     // Navigation & Header
@@ -1066,6 +1151,18 @@ export const translations: Record<Language, Record<string, string>> = {
       "Наш офис в Центурионе поддерживает реализацию и управление проектами в регионе Гаутенг со специализированным опытом в инженерных решениях.",
     description_rb:
       "Наш офис в Рустенбурге специализируется на горнодобывающих и промышленных проектах и обслуживает ресурсный сектор в регионе Северо-Запад.",
+
+    howWeWork: "Как мы работаем",
+    whatWeDo: "Что мы делаем",
+    tapToLearnMore: "Нажмите, чтобы узнать больше",
+    scroll: "Прокрутить",
+    reachOut: "Свяжитесь с нами",
+    letsTalk: "Давайте поговорим",
+    sending: "Отправка…",
+    notFoundTitle: "Страница не найдена",
+    notFoundDesc: "Упс! Страница, которую вы ищете, не существует. Давайте вернём вас на правильный путь.",
+    returnHome: "Вернуться на главную",
+    toggleNav: "Переключить навигацию",
   },
 };
 

@@ -133,7 +133,7 @@ export default function Index() {
           <div className="section-container">
             <Section>
               <motion.p variants={fadeUp} className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-2 text-center">
-                How We Work
+                {t("howWeWork")}
               </motion.p>
               <motion.h2 variants={fadeUp} className="text-4xl font-bold text-navy-900 mb-4 text-center">
                 {t("ourStrategy")}
@@ -167,7 +167,7 @@ export default function Index() {
           <div className="section-container">
             <Section>
               <motion.p variants={fadeUp} className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-2 text-center mx-auto">
-                What We Do
+                {t("whatWeDo")}
               </motion.p>
               <motion.h2 variants={fadeUp} className="text-4xl font-bold text-navy-900 mb-4 text-center mr-auto">
                 {t("servicesTitle")}

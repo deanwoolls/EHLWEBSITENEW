@@ -114,7 +114,7 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             className="text-lime-400 font-semibold uppercase tracking-widest text-sm mb-4"
           >
-            Reach Out
+            {t("reachOut")}
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -209,7 +209,7 @@ export default function Contact() {
             animate={formInView ? "visible" : "hidden"}
           >
             <motion.p variants={fadeUp} className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-2">
-              Let's Talk
+              {t("letsTalk")}
             </motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl font-bold text-navy-900 mb-3">
               {t("contactFormTitle")}
@@ -333,7 +333,7 @@ export default function Contact() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
                     </svg>
-                    Sending…
+                    {t("sending")}
                   </span>
                 ) : (
                   <>{t("sendMessage")} <ArrowRight size={18} /></>

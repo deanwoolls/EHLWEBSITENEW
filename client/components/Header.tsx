@@ -62,10 +62,10 @@ export default function Header() {
 
           {/* ISO / BBBEE badges */}
           <div className="hidden md:flex items-center gap-6">
-            {[{ label: "ISO 9001:2025" }, { label: "Level 1 BBBEE" }].map(({ label }) => (
-              <div key={label} className="flex items-center gap-2">
+            {(["iso9001", "level1BBBEE"] as const).map((key) => (
+              <div key={key} className="flex items-center gap-2">
                 <CheckCircle size={20} className="text-lime-400" />
-                <span className="text-xs font-semibold text-white">{label}</span>
+                <span className="text-xs font-semibold text-white">{t(key)}</span>
               </div>
             ))}
           </div>
@@ -105,7 +105,7 @@ export default function Header() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-white hover:text-lime-400 transition-colors"
-            aria-label="Toggle navigation"
+            aria-label={t("toggleNav")}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
