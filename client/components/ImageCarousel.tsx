@@ -25,7 +25,7 @@ export default function ImageCarousel() {
     <div className="relative w-full overflow-hidden" style={{ height: "100svh", minHeight: 520 }}>
       {/* Background video */}
       <video
-        src="https://cdn.builder.io/o/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F51a213f0855345f587beaa659a5ac29e?alt=media&token=3e966c50-54f9-4290-89de-fb936b8f9b50&apiKey=e5a5727af6f64ca390a031056c6f518e"
+        src="https://cdn.builder.io/o/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F51d90f82b79148bc9c0e89353a35eb3e?alt=media&token=d1831b1c-eb5e-43ed-b1f1-c56829600487&apiKey=e5a5727af6f64ca390a031056c6f518e"
         autoPlay
         muted
         loop
