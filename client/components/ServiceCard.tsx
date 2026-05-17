@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LucideIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/hooks/useLanguage";
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -16,6 +17,7 @@ export default function ServiceCard({
   backContent,
 }: ServiceCardProps) {
   const [flipped, setFlipped] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <motion.div
@@ -45,7 +47,7 @@ export default function ServiceCard({
             <Icon size={36} />
           </motion.div>
           <h3 className="text-xl font-bold text-center px-4">{title}</h3>
-          <p className="text-xs mt-4 opacity-50 uppercase tracking-widest">Tap to learn more</p>
+          <p className="text-xs mt-4 opacity-50 uppercase tracking-widest">{t("tapToLearnMore")}</p>
         </div>
 
         {/* Back */}

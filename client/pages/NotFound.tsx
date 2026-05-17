@@ -3,8 +3,10 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { usePageTitle } from "@/lib/seo";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const NotFound = () => {
+  const { t } = useLanguage();
   usePageTitle({
     title:
       "Page Not Found | EHL Engineering Group - Consulting Engineers South Africa",
@@ -27,14 +29,13 @@ const NotFound = () => {
         <div className="text-center px-4">
           <h1 className="text-7xl font-bold text-navy-900 mb-4">404</h1>
           <p className="text-2xl font-semibold text-navy-700 mb-4">
-            Page not found
+            {t("notFoundTitle")}
           </p>
           <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
-            Oops! The page you're looking for doesn't exist. Let's get you back
-            on track.
+            {t("notFoundDesc")}
           </p>
           <Link to="/" className="btn-primary inline-block">
-            Return to Home
+            {t("returnHome")}
           </Link>
         </div>
       </div>

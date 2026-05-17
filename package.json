@@ -21,10 +21,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@sendgrid/mail": "^8.1.4",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "resend": "^4.5.1",
     "zod": "^3.25.76"
   },
   "devDependencies": {

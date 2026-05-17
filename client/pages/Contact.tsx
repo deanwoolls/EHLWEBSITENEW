@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MapPin, Mail, Phone, ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { MapPin, Mail, Phone, ArrowRight, CheckCircle2 } from "lucide-react";
 import { usePageTitle } from "@/lib/seo";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -17,7 +17,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-type FormState = "idle" | "loading" | "success" | "error";
+type FormState = "idle" | "success";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -34,34 +34,44 @@ export default function Contact() {
     name: "", email: "", phone: "", company: "", subject: "", message: "",
   });
   const [formState, setFormState] = useState<FormState>("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [mailLinks, setMailLinks] = useState<{ mailto: string; gmail: string; outlook: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormState("loading");
-    setErrorMsg("");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? "Something went wrong. Please try again.");
-      }
-      setFormState("success");
-      setFormData({ name: "", email: "", phone: "", company: "", subject: "", message: "" });
-    } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
-      setFormState("error");
-    }
+    const to = "info@ehl.co.za";
+    const subjectLabel = formData.subject
+      ? `[EHL Enquiry] ${formData.subject.replace(/-/g, " ")} — ${formData.name}`
+      : `[EHL Enquiry] ${formData.name}`;
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.phone ? `Phone: ${formData.phone}` : null,
+      formData.company ? `Company: ${formData.company}` : null,
+      `Subject: ${formData.subject}`,
+      ``,
+      `Message:`,
+      formData.message,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const encodedSubject = encodeURIComponent(subjectLabel);
+    const encodedBody = encodeURIComponent(body);
+
+    const mailto = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+    const gmail = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(to)}&su=${encodedSubject}&body=${encodedBody}`;
+    const outlook = `https://outlook.live.com/mail/0/deeplink/compose?to=${encodeURIComponent(to)}&subject=${encodedSubject}&body=${encodedBody}`;
+
+    setMailLinks({ mailto, gmail, outlook });
+    window.open(mailto, "_blank");
+    setFormState("success");
+    setFormData({ name: "", email: "", phone: "", company: "", subject: "", message: "" });
   };
 
   const offices = [
@@ -71,8 +81,7 @@ export default function Contact() {
       regionKey: "headOffice",
       address: "The Woodlands Office Park, Building 32 First Floor, 20 Woodlands Drive",
       postalCode: "Woodlands, Sandton, 2080",
-      phone: "+27 (0)11 370 7400",
-      email: "johannesburg@ehleng.com",
+      mapQuery: "The+Woodlands+Office+Park+20+Woodlands+Drive+Sandton+South+Africa",
     },
     {
       country: "South Africa",
@@ -80,8 +89,7 @@ export default function Contact() {
       regionKey: "pretoria",
       address: "72 Regency Drive, Route 21 Corporate Park",
       postalCode: "Irene, Centurion, Pretoria, 0157",
-      phone: "+27 (0)12 XXX XXXX",
-      email: "centurion@ehleng.com",
+      mapQuery: "72+Regency+Drive+Route+21+Corporate+Park+Irene+Centurion+South+Africa",
     },
     {
       country: "South Africa",
@@ -89,8 +97,7 @@ export default function Contact() {
       regionKey: "miningOps",
       address: "The Towers Building, 180 Beyers Naude Drive",
       postalCode: "Rustenburg, Northwest, 0300",
-      phone: "+27 (0)14 XXX XXXX",
-      email: "rustenburg@ehleng.com",
+      mapQuery: "180+Beyers+Naude+Drive+Rustenburg+South+Africa",
     },
   ];
 
@@ -99,28 +106,21 @@ export default function Contact() {
       <Header />
 
       {/* Hero */}
-      <section className="relative py-24 mt-16" style={{ backgroundColor: "#002e5d" }}>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg, #f5c033 0, #f5c033 1px, transparent 0, transparent 50%)",
-            backgroundSize: "20px 20px",
-          }}
-        />
-        <div className="relative z-10 section-container">
+      <section className="relative py-24 mt-16 bg-white">
+        <div className="section-container">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-lime-400 font-semibold uppercase tracking-widest text-sm mb-4"
+            className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-4"
           >
-            Reach Out
+            {t("reachOut")}
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black text-white mb-8"
+            className="text-5xl md:text-7xl font-black text-navy-900 mb-8"
           >
             {t("contactTitle")}
           </motion.h1>
@@ -128,15 +128,15 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 text-white"
+            className="flex flex-col sm:flex-row gap-4 text-gray-600"
           >
-            <a href="mailto:info@ehl.co.za" className="flex items-center gap-3 hover:text-lime-400 transition-colors text-lg">
-              <Mail size={20} className="text-lime-400" />
+            <a href="mailto:info@ehl.co.za" className="flex items-center gap-3 hover:text-lime-500 transition-colors text-lg">
+              <Mail size={20} className="text-lime-500" />
               info@ehl.co.za
             </a>
-            <span className="hidden sm:block text-white/30">|</span>
-            <a href="tel:+27113707400" className="flex items-center gap-3 hover:text-lime-400 transition-colors text-lg">
-              <Phone size={20} className="text-lime-400" />
+            <span className="hidden sm:block text-gray-300">|</span>
+            <a href="tel:+27113707400" className="flex items-center gap-3 hover:text-lime-500 transition-colors text-lg">
+              <Phone size={20} className="text-lime-500" />
               +27 (0)11 370 7400
             </a>
           </motion.div>
@@ -157,35 +157,37 @@ export default function Contact() {
               <motion.div
                 key={index}
                 variants={fadeUp}
-                className="rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-gray-100 group"
+                className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100 group"
               >
-                <div className="mb-6">
-                  <span className="text-xs font-bold uppercase tracking-widest text-lime-500 bg-lime-50 px-3 py-1 rounded-full">
-                    {t(office.regionKey)}
-                  </span>
-                  <h2 className="text-2xl font-bold text-navy-900 mt-3 mb-1">{office.city}</h2>
-                  <p className="text-xs text-gray-400">{office.country}</p>
+                {/* Map embed */}
+                <div className="relative h-48 w-full">
+                  <iframe
+                    title={`Map of ${office.city}`}
+                    src={`https://maps.google.com/maps?q=${office.mapQuery}&output=embed&z=15`}
+                    className="absolute inset-0 w-full h-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
-                <div className="space-y-3 text-sm">
+                <div className="p-8">
+                  <div className="mb-4">
+                    <span className="text-xs font-bold uppercase tracking-widest text-lime-500 bg-lime-50 px-3 py-1 rounded-full">
+                      {t(office.regionKey)}
+                    </span>
+                    <h2 className="text-2xl font-bold text-navy-900 mt-3 mb-1">{office.city}</h2>
+                    <p className="text-xs text-gray-400">{office.country}</p>
+                  </div>
                   <a
                     href={`https://www.google.com/maps/search/${encodeURIComponent(`${office.address}, ${office.postalCode}, ${office.city}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-3 text-gray-600 hover:text-navy-900 transition-colors"
+                    className="flex items-start gap-3 text-sm text-gray-600 hover:text-navy-900 transition-colors"
                   >
                     <MapPin size={18} className="text-lime-500 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-medium">{office.address}</p>
                       <p className="text-gray-400">{office.postalCode}</p>
                     </div>
-                  </a>
-                  <a href={`tel:${office.phone.replace(/\s/g, "")}`} className="flex items-center gap-3 text-gray-600 hover:text-navy-900 transition-colors">
-                    <Phone size={16} className="text-lime-500 flex-shrink-0" />
-                    {office.phone}
-                  </a>
-                  <a href={`mailto:${office.email}`} className="flex items-center gap-3 text-gray-600 hover:text-navy-900 transition-colors">
-                    <Mail size={16} className="text-lime-500 flex-shrink-0" />
-                    {office.email}
                   </a>
                 </div>
               </motion.div>
@@ -209,7 +211,7 @@ export default function Contact() {
             animate={formInView ? "visible" : "hidden"}
           >
             <motion.p variants={fadeUp} className="text-lime-500 font-semibold uppercase tracking-widest text-sm mb-2">
-              Let's Talk
+              {t("letsTalk")}
             </motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl font-bold text-navy-900 mb-3">
               {t("contactFormTitle")}
@@ -218,28 +220,46 @@ export default function Contact() {
               {t("contactFormDesc")}
             </motion.p>
 
-            {formState === "success" && (
+            {formState === "success" && mailLinks && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="mb-8 p-5 bg-green-50 border border-green-200 rounded-xl flex items-start gap-3"
+                className="mb-8 p-5 bg-green-50 border border-green-200 rounded-xl"
               >
-                <CheckCircle2 size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-semibold text-green-800">{t("thankYou")}</p>
-                  <p className="text-sm text-green-600">{t("thankYouDesc")}</p>
+                <div className="flex items-start gap-3 mb-4">
+                  <CheckCircle2 size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-green-800">{t("thankYou")}</p>
+                    <p className="text-sm text-green-600 mt-0.5">If your mail app didn't open, use one of the options below:</p>
+                  </div>
                 </div>
-              </motion.div>
-            )}
-
-            {formState === "error" && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mb-8 p-5 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3"
-              >
-                <AlertCircle size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-700">{errorMsg}</p>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={mailLinks.mailto}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold border-2 transition-all"
+                    style={{ borderColor: "#002e5d", color: "#002e5d" }}
+                  >
+                    <Mail size={15} /> Default Mail App
+                  </a>
+                  <a
+                    href={mailLinks.gmail}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-white border-2 border-red-400 text-red-600 transition-all hover:bg-red-50"
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                    Gmail
+                  </a>
+                  <a
+                    href={mailLinks.outlook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-white border-2 border-blue-500 text-blue-600 transition-all hover:bg-blue-50"
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 7.387v10.478L19.2 21l-9.6-2.4V5.4L24 7.387zM0 5.4l9.6 2.4v9.6L0 18.6V5.4zm14.4-1.8L9.6 5.4 0 3l14.4-3.6L24 3l-9.6 2.4z"/></svg>
+                    Outlook Web
+                  </a>
+                </div>
               </motion.div>
             )}
 
@@ -321,23 +341,12 @@ export default function Contact() {
 
               <motion.button
                 type="submit"
-                disabled={formState === "loading"}
-                className="w-full inline-flex items-center justify-center gap-2 font-bold py-4 px-8 rounded-xl transition-all disabled:opacity-60"
+                className="w-full inline-flex items-center justify-center gap-2 font-bold py-4 px-8 rounded-xl transition-all"
                 style={{ backgroundColor: "#002e5d", color: "#fff" }}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
               >
-                {formState === "loading" ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-                    </svg>
-                    Sending…
-                  </span>
-                ) : (
-                  <>{t("sendMessage")} <ArrowRight size={18} /></>
-                )}
+                {t("sendMessage")} <ArrowRight size={18} />
               </motion.button>
             </motion.form>
           </motion.div>
@@ -351,8 +360,7 @@ export default function Contact() {
           backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F5fae7741e22a4763ad33a3fbbcf02ce4)",
         }}
       >
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative section-container text-center">
+        <div className="section-container text-center">
           <h2 className="text-4xl font-bold text-white mb-6">{t("visitUs")}</h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">{t("visitUsDesc")}</p>
         </div>
