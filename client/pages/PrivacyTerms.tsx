@@ -4,9 +4,9 @@ import { usePageTitle } from "@/lib/seo";
 
 export default function PrivacyTerms() {
   usePageTitle({
-    title: "Privacy & Terms | EHL Engineering Group",
+    title: "Privacy Policy | Terms & Conditions | Disclaimer | EHL Engineering Group",
     description:
-      "Privacy policy and terms of service for EHL Engineering Group. Learn about our data protection practices and service terms.",
+      "Privacy policy, terms and conditions, and disclaimer for EHL Engineering Group. Learn about our data protection practices and service terms.",
   });
 
   return (
@@ -16,12 +16,12 @@ export default function PrivacyTerms() {
         <section className="py-20" style={{ backgroundColor: "#002e5d" }}>
           <div className="section-container">
             <h1 className="text-5xl font-bold text-white mb-8">
-              Privacy & Terms
+              Privacy Policy · Terms &amp; Conditions · Disclaimer
             </h1>
 
             <div className="max-w-3xl prose prose-lg">
               {/* Privacy Section */}
-              <h2 className="text-2xl font-bold text-white mt-8 mb-4">
+              <h2 id="privacy" className="text-2xl font-bold text-white mt-8 mb-4 scroll-mt-24">
                 Privacy Policy
               </h2>
               <p className="text-white mb-4">
@@ -82,8 +82,8 @@ export default function PrivacyTerms() {
               </ul>
 
               {/* Terms Section */}
-              <h2 className="text-2xl font-bold text-white mt-12 mb-4">
-                Terms of Service
+              <h2 id="terms" className="text-2xl font-bold text-white mt-12 mb-4 scroll-mt-24">
+                Terms &amp; Conditions
               </h2>
               <p className="text-white mb-4">
                 These terms and conditions govern your use of our website and
@@ -121,7 +121,7 @@ export default function PrivacyTerms() {
                 </li>
               </ul>
 
-              <h3 className="text-xl font-bold text-white mt-6 mb-3">
+              <h3 id="disclaimer" className="text-xl font-bold text-white mt-6 mb-3 scroll-mt-24">
                 Disclaimer
               </h3>
               <p className="text-white mb-4">
@@ -162,7 +162,7 @@ export default function PrivacyTerms() {
                 Contact Us
               </h3>
               <p className="text-white mb-4">
-                If you have questions about this Privacy & Terms policy or our
+                If you have questions about our Privacy Policy, Terms &amp; Conditions, or Disclaimer, or our
                 practices, please contact us at:
               </p>
               <p className="text-white">
