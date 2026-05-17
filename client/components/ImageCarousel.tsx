@@ -22,7 +22,7 @@ export default function ImageCarousel() {
   const { t } = useLanguage();
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: "100svh", minHeight: 520 }}>
+    <div className="relative w-full overflow-hidden h-[70svh] min-h-[380px] md:h-svh md:min-h-[520px]">
       {/* Background video */}
       <video
         src="https://cdn.builder.io/o/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F51d90f82b79148bc9c0e89353a35eb3e?alt=media&token=d1831b1c-eb5e-43ed-b1f1-c56829600487&apiKey=e5a5727af6f64ca390a031056c6f518e"
