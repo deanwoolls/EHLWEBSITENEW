@@ -24,7 +24,7 @@ export default function ImageCarousel() {
   return (
     <div className="relative w-full aspect-video overflow-hidden">
       <video
-        src="https://cdn.builder.io/o/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F51d90f82b79148bc9c0e89353a35eb3e?alt=media&token=d1831b1c-eb5e-43ed-b1f1-c56829600487&apiKey=e5a5727af6f64ca390a031056c6f518e"
+        src="https://cdn.builder.io/o/assets%2Fe5a5727af6f64ca390a031056c6f518e%2F047969e4079747cdb24c1db932486e96?alt=media&token=34504645-f12b-4fa9-8e04-faffee20438d&apiKey=e5a5727af6f64ca390a031056c6f518e"
         autoPlay
         muted
         loop
